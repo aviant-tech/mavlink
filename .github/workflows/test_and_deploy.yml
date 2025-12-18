@@ -93,6 +93,28 @@ jobs:
           cmake -Bbuild -H. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
           cmake --build build
 
+  build-aviant-dialect:
+    name: Build Aviant C headers
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install future lxml
+      - name: Generate Aviant C headers
+        run: |
+          python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/aviant.xml
+      - name: Verify headers generated
+        run: |
+          ls -la generated/include/mavlink/v2.0/aviant/
+          test -f generated/include/mavlink/v2.0/aviant/mavlink.h
+
   node-tests:
     name: Node ${{ matrix.node-version }} test
     runs-on: ubuntu-22.04
