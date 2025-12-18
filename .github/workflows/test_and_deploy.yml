@@ -3,7 +3,7 @@ name: Test and deploy
 on:
   push:
     branches:
-    - 'aviant/main'
+    - 'aviant/**'
   pull_request:
     branches:
     - '*'
