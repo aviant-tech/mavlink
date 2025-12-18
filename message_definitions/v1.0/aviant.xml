@@ -55,11 +55,12 @@
       <field name="accuracy" type="uint8_t" enum="AVIANT_NAV_ACCURACY">Absolute position accuracy</field>
       <field name="redundancy" type="uint8_t" enum="AVIANT_NAV_REDUNDANCY">Navigation sensor redundancy</field>
     </message>
-    <message name="AVIANT_INDICATOR_MR_THRUST" id="59003">
-      <description>Top motor thrust levels</description>
-      <field name="state" type="uint8_t" enum="AVIANT_INDICATOR_STATE"/>
-      <field name="thrust_margin" type="float">Remaining thrust margin on the heaviest loaded motor</field>
-      <field name="thrust_margin_omi" type="float">Estimated remaining thrust margin on the heaviest loaded motor, in case one motor becomes inoperative</field>
+    <message name="AVIANT_INDICATOR_MOTORS" id="59003">
+      <description>Motor status indicators</description>
+      <field name="mot_voltage_cv" type="int16_t[12]" units="cV">Motor voltages in centivolt</field>
+      <field name="mot_load_status" type="uint8_t[12]" enum="AVIANT_INDICATOR_STATE">Motor load status per motor</field>
+      <field name="anomalous_current_ca" type="int16_t" units="cA">Anomalous current in centiamps</field>
+      <field name="anomalous_current_status" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Anomalous current status</field>
     </message>
     <message name="AVIANT_INDICATOR_FW_ICING" id="59004">
       <description>Icing indicator</description>
