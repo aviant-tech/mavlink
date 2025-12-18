@@ -55,15 +55,38 @@
       <field name="accuracy" type="uint8_t" enum="AVIANT_NAV_ACCURACY">Absolute position accuracy</field>
       <field name="redundancy" type="uint8_t" enum="AVIANT_NAV_REDUNDANCY">Navigation sensor redundancy</field>
     </message>
-    <message name="AVIANT_INDICATOR_MR_THRUST" id="59003">
-      <description>Top motor thrust levels</description>
-      <field name="state" type="uint8_t" enum="AVIANT_INDICATOR_STATE"/>
-      <field name="thrust_margin" type="float">Remaining thrust margin on the heaviest loaded motor</field>
-      <field name="thrust_margin_omi" type="float">Estimated remaining thrust margin on the heaviest loaded motor, in case one motor becomes inoperative</field>
+    <message name="AVIANT_INDICATOR_MOTORS" id="59003">
+      <description>Motor status indicators</description>
+      <field name="mot_voltage_cv" type="int16_t[12]" units="cV">Motor voltages in centivolt</field>
+      <field name="mot_load_status" type="uint8_t[12]" enum="AVIANT_INDICATOR_STATE">Motor load status per motor</field>
+      <field name="anomalous_current_ca" type="int16_t" units="cA">Anomalous current in centiamps</field>
+      <field name="anomalous_current_status" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Anomalous current status</field>
     </message>
     <message name="AVIANT_INDICATOR_FW_ICING" id="59004">
       <description>Icing indicator</description>
       <field name="state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Icing severity</field>
+    </message>
+    <message name="AVIANT_INDICATOR_TEMP_LOGGER" id="59005">
+      <description>Logger temperature indicators</description>
+      <field name="pi_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Pi internal temperature status</field>
+      <field name="pi_internal" type="int8_t" units="degC">Pi internal temperature</field>
+      <field name="cube_ambient_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Cube ambient temperature status</field>
+      <field name="cube_ambient" type="int8_t" units="degC">Cube ambient temperature</field>
+      <field name="fuselage_ambient_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Fuselage ambient temperature status</field>
+      <field name="fuselage_ambient" type="int8_t" units="degC">Fuselage ambient temperature</field>
+      <field name="outside_ambient_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Outside ambient temperature status</field>
+      <field name="outside_ambient" type="int8_t" units="degC">Outside ambient temperature</field>
+    </message>
+    <message name="AVIANT_INDICATOR_TEMP_FC" id="59006">
+      <description>Flight controller temperature indicators</description>
+      <field name="battery_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Battery internal temperature status</field>
+      <field name="battery_internal" type="int8_t" units="degC">Battery internal temperature</field>
+      <field name="airspeed_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Airspeed sensor internal temperature status</field>
+      <field name="airspeed_internal" type="int8_t" units="degC">Airspeed sensor internal temperature</field>
+      <field name="accel_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Accelerometer internal temperature status</field>
+      <field name="accel_internal" type="int8_t" units="degC">Accelerometer internal temperature</field>
+      <field name="baro_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Barometer internal temperature status</field>
+      <field name="baro_internal" type="int8_t" units="degC">Barometer internal temperature</field>
     </message>
   </messages>
 </mavlink>
