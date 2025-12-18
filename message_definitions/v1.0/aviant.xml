@@ -65,5 +65,27 @@
       <description>Icing indicator</description>
       <field name="state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Icing severity</field>
     </message>
+    <message name="AVIANT_INDICATOR_TEMP_LOGGER" id="59005">
+      <description>Logger temperature indicators</description>
+      <field name="pi_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Pi internal temperature status</field>
+      <field name="pi_internal" type="int8_t" units="degC">Pi internal temperature</field>
+      <field name="cube_ambient_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Cube ambient temperature status</field>
+      <field name="cube_ambient" type="int8_t" units="degC">Cube ambient temperature</field>
+      <field name="fuselage_ambient_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Fuselage ambient temperature status</field>
+      <field name="fuselage_ambient" type="int8_t" units="degC">Fuselage ambient temperature</field>
+      <field name="outside_ambient_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Outside ambient temperature status</field>
+      <field name="outside_ambient" type="int8_t" units="degC">Outside ambient temperature</field>
+    </message>
+    <message name="AVIANT_INDICATOR_TEMP_FC" id="59006">
+      <description>Flight controller temperature indicators</description>
+      <field name="battery_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Battery internal temperature status</field>
+      <field name="battery_internal" type="int8_t" units="degC">Battery internal temperature</field>
+      <field name="airspeed_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Airspeed sensor internal temperature status</field>
+      <field name="airspeed_internal" type="int8_t" units="degC">Airspeed sensor internal temperature</field>
+      <field name="accel_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Accelerometer internal temperature status</field>
+      <field name="accel_internal" type="int8_t" units="degC">Accelerometer internal temperature</field>
+      <field name="baro_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Barometer internal temperature status</field>
+      <field name="baro_internal" type="int8_t" units="degC">Barometer internal temperature</field>
+    </message>
   </messages>
 </mavlink>
