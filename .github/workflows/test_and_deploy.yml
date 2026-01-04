@@ -1,12 +1,7 @@
-name: Test and deploy
+name: Test and update C headers
 
 on:
-  push:
-    branches:
-    - 'aviant/**'
   pull_request:
-    branches:
-    - '*'
 
 # paths:
 # - "*"
@@ -140,13 +135,12 @@ jobs:
         run: |
           ./scripts/test.sh node
 
-  deploy:
-    name: Generate and push C headers
-    needs: [format, spell-check, python-lint, python-tests, node-tests]
+  push-c-headers:
+    name: Push C headers
+    needs: [format, spell-check, python-lint, python-tests, node-tests, build-cmake-c-example, build-aviant-dialect]
     runs-on: ubuntu-22.04
-    if: github.ref == 'refs/heads/aviant/main'
     steps:
-      - name: Install deploy SSH key
+      - name: Install C headers SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
@@ -171,6 +165,33 @@ jobs:
       - name: Install dependencies
         run: |
           pip install future lxml
-      - name: Run deploy script
+      - name: Update C headers repository
         run: |
-          ./scripts/update_generated_repos.sh
+          ./scripts/update_c_headers_repo.sh
+
+  push-pymavlink:
+    name: Push pymavlink submodule update
+    needs: [push-c-headers]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Install pymavlink SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PYMAVLINK_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          cat > ~/.ssh/config <<EOF
+          Host github.com
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
+          EOF
+
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - name: Update pymavlink submodule
+        run: |
+          ./scripts/update_pymavlink_submodule.sh
