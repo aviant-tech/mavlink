@@ -3,7 +3,7 @@ name: Test and deploy
 on:
   push:
     branches:
-    - 'aviant/**'
+    - 'aviant/main'
   pull_request:
     branches:
     - '*'
@@ -144,7 +144,7 @@ jobs:
     name: Generate and push C headers
     needs: [format, spell-check, python-lint, python-tests, node-tests]
     runs-on: ubuntu-22.04
-    if: github.ref == 'refs/heads/aviant/main'
+    if: github.ref == 'refs/heads/aviant/main' || github.event_name == 'pull_request'
     steps:
       - name: Install deploy SSH key
         run: |
