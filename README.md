@@ -1,9 +1,11 @@
 # MAVLink - Aviant dialect
 This repository contains the Aviant MAVLink dialect.
 
-We use message and command IDs starting at `59000`. This is in the far end of the blocks that can be requested by other vendors, and is unlikely to be taken by someone else in a long time. Note that message and command IDs are separate, so the same number can correspond to both a message and a different command.
+We use message and command IDs starting at `59000`, up to `59999`. This is in the far end of the blocks that can be requested by other vendors, and is unlikely to be taken by someone else in a long time. Note that message and command IDs are separate, so the same number can correspond to both a message and a different command.
 
-**Review policy**: Self approval  
+For messages that are not intended for regular use, e.g. "AVIANT_TRN_TEST_DATA", we start counting at 59700 in order to make the list of "regular" messages more readable.
+
+**Review policy**: Self approval
 
 **Changes**: Avoid making changes that break backwards compatibility (Define new messages rather than changing existing ones)
 
