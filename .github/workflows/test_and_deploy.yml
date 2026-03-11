@@ -1,6 +1,9 @@
 name: Test and update C headers
 
 on:
+  push:
+    branches:
+      - 'aviant/main'
   pull_request:
 
 # paths:
@@ -168,6 +171,8 @@ jobs:
       - name: Update C headers repository
         run: |
           ./scripts/update_c_headers_repo.sh
+        env:
+          PUSH_TO_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/aviant/main' }}
 
   push-pymavlink:
     name: Push pymavlink submodule update
@@ -195,3 +200,5 @@ jobs:
       - name: Update pymavlink submodule
         run: |
           ./scripts/update_pymavlink_submodule.sh
+        env:
+          PUSH_TO_MAIN: ${{ github.event_name == 'push' && github.ref == 'refs/heads/aviant/main' }}
