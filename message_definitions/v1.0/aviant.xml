@@ -35,6 +35,16 @@
       <entry name="AVIANT_NAV_ACCURACY_APPROXIMATE" value="2"/>
       <entry name="AVIANT_NAV_ACCURACY_FAILED" value="3"/>
     </enum>
+    <enum name="AVIANT_ATS_STATUS_FLAGS">
+      <description>ATS status flags</description>
+      <entry name="ACCEL_NORM_FAIL" value="1"/>
+      <entry name="ROLL_FAIL" value="2"/>
+      <entry name="PITCH_FAIL" value="4"/>
+      <entry name="FC_TIMEOUT" value="8"/>
+      <entry name="POWER_LOSS" value="16"/>
+      <entry name="REBOOTED_WHILE_ARMED" value="32"/>
+      <entry name="PARACHUTE_DEPLOY" value="64"/>
+    </enum>
   </enums>
   <messages>
     <message name="AVIANT_HEARTBEAT" id="59000">
@@ -87,6 +97,21 @@
       <field name="accel_internal" type="int8_t" units="degC">Accelerometer internal temperature</field>
       <field name="baro_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Barometer internal temperature status</field>
       <field name="baro_internal" type="int8_t" units="degC">Barometer internal temperature</field>
+    </message>
+    <!-- I left some room for more indicator messages here, so they can get consecutive IDs -->
+    <message name="AVIANT_DETAILED_FC_STATE" id="59025">
+      <description>Detailed flight controller state</description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
+      <field type="uint64_t" name="time_unix_usec" units="us">Timestamp (UNIX epoch time).</field>
+      <field type="uint8_t" name="armed" enum="MAV_BOOL">Is the aircraft armed?</field>
+      <field type="uint8_t" name="vtol_state" enum="MAV_VTOL_STATE">The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration.</field>
+      <field type="uint8_t" name="system_status" enum="MAV_STATE">System status flag, equivalent to HEARTBEAT.system_status</field>
+    </message>
+    <message name="AVIANT_ATS_STATUS" id="59026">
+      <description>ATS status. Intended to match the AviantAts.msg uorb message, but using a bitmask instead of bools</description>
+      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
+      <field type="uint8_t" name="fc_state">fc_state, see uorb message</field>
+      <field type="uint32_t" name="ats_status_flags" enum="AVIANT_ATS_STATUS_FLAGS">ATS Status flags</field>
     </message>
   </messages>
 </mavlink>
