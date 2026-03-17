@@ -35,15 +35,16 @@
       <entry name="AVIANT_NAV_ACCURACY_APPROXIMATE" value="2"/>
       <entry name="AVIANT_NAV_ACCURACY_FAILED" value="3"/>
     </enum>
-    <enum name="AVIANT_ATS_STATUS_FLAGS">
+    <enum name="AVIANT_ATS_STATUS_FLAG">
       <description>ATS status flags</description>
-      <entry name="ACCEL_NORM_FAIL" value="1"/>
-      <entry name="ROLL_FAIL" value="2"/>
-      <entry name="PITCH_FAIL" value="4"/>
-      <entry name="FC_TIMEOUT" value="8"/>
-      <entry name="POWER_LOSS" value="16"/>
-      <entry name="REBOOTED_WHILE_ARMED" value="32"/>
-      <entry name="PARACHUTE_DEPLOY" value="64"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_ACCEL_NORM_FAIL" value="1"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_ROLL_FAIL" value="2"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_PITCH_FAIL" value="4"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_FC_TIMEOUT" value="8"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_POWER_LOSS" value="16"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_REBOOTED_WHILE_ARMED" value="32"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_PARACHUTE_DEPLOY" value="64"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_UPS_UNHEALTHY" value="128"/>
     </enum>
   </enums>
   <messages>
@@ -111,7 +112,10 @@
       <description>ATS status. Intended to match the AviantAts.msg uorb message, but using a bitmask instead of bools</description>
       <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
       <field type="uint8_t" name="fc_state">fc_state, see uorb message</field>
-      <field type="uint32_t" name="ats_status_flags" enum="AVIANT_ATS_STATUS_FLAGS">ATS Status flags</field>
+      <field type="uint32_t" name="ats_status_flags" enum="AVIANT_ATS_STATUS_FLAG">ATS Status flags</field>
+      <field type="float" name="main_voltage1" units="V">Main voltage measurement 1</field>
+      <field type="float" name="main_voltage2" units="V">Main voltage measurement 2</field>
+      <field type="float" name="ups_voltage" units="V">UPS voltage measurement</field>
     </message>
   </messages>
 </mavlink>
