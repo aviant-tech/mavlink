@@ -44,6 +44,7 @@
       <entry name="POWER_LOSS" value="16"/>
       <entry name="REBOOTED_WHILE_ARMED" value="32"/>
       <entry name="PARACHUTE_DEPLOY" value="64"/>
+      <entry name="UPS_UNHEALTHY" value="128"/>
     </enum>
   </enums>
   <messages>
