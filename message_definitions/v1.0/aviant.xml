@@ -113,6 +113,8 @@
       <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
       <field type="uint8_t" name="fc_state">fc_state, see uorb message</field>
       <field type="uint32_t" name="ats_status_flags" enum="AVIANT_ATS_STATUS_FLAG">ATS Status flags</field>
+      <field type="uint8_t" name="power_loss_trigger_enabled" enum="MAV_BOOL">Power loss trigger enabled</field>
+      <field type="uint8_t" name="ats_active" enum="MAV_BOOL">ATS active</field>
       <field type="float" name="main_voltage1" units="V">Main voltage measurement 1</field>
       <field type="float" name="main_voltage2" units="V">Main voltage measurement 2</field>
       <field type="float" name="ups_voltage" units="V">UPS voltage measurement</field>
