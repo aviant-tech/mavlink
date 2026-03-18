@@ -105,8 +105,7 @@
       <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
       <field type="uint64_t" name="time_unix_usec" units="us">Timestamp (UNIX epoch time).</field>
       <field type="uint8_t" name="armed" enum="MAV_BOOL">Is the aircraft armed?</field>
-      <field type="uint8_t" name="vtol_state" enum="MAV_VTOL_STATE">The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration.</field>
-      <field type="uint8_t" name="system_status" enum="MAV_STATE">System status flag, equivalent to HEARTBEAT.system_status</field>
+      <field type="uint8_t" name="flight_termination" enum="MAV_BOOL">Is the aircraft in flight termination?</field>
     </message>
     <message name="AVIANT_ATS_STATUS" id="59026">
       <description>ATS status. Intended to match the AviantAts.msg uorb message, but using a bitmask instead of bools</description>
@@ -114,7 +113,7 @@
       <field type="uint8_t" name="fc_state">fc_state, see uorb message</field>
       <field type="uint32_t" name="ats_status_flags" enum="AVIANT_ATS_STATUS_FLAG">ATS Status flags</field>
       <field type="uint8_t" name="power_loss_trigger_enabled" enum="MAV_BOOL">Power loss trigger enabled</field>
-      <field type="uint8_t" name="ats_active" enum="MAV_BOOL">ATS active</field>
+      <field type="uint8_t" name="ats_enabled" enum="MAV_BOOL">ATS enabled</field>
       <field type="float" name="main_voltage1" units="V">Main voltage measurement 1</field>
       <field type="float" name="main_voltage2" units="V">Main voltage measurement 2</field>
       <field type="float" name="ups_voltage" units="V">UPS voltage measurement</field>
