@@ -110,7 +110,8 @@
     <message name="AVIANT_ATS_STATUS" id="59026">
       <description>ATS status. Intended to match the AviantAts.msg uorb message, but using a bitmask instead of bools</description>
       <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
-      <field type="uint8_t" name="fc_state">fc_state, see uorb message</field>
+      <field type="uint8_t" name="fc_armed" enum="MAV_BOOL">Is the flight controller armed?</field>
+      <field type="uint8_t" name="fc_flight_termination" enum="MAV_BOOL">Is the flight controller in flight termination?</field>
       <field type="uint32_t" name="ats_status_flags" enum="AVIANT_ATS_STATUS_FLAG">ATS Status flags</field>
       <field type="uint8_t" name="power_loss_trigger_enabled" enum="MAV_BOOL">Power loss trigger enabled</field>
       <field type="uint8_t" name="ats_enabled" enum="MAV_BOOL">ATS enabled</field>
