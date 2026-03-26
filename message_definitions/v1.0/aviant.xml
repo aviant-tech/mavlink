@@ -101,6 +101,18 @@
       <field name="baro_internal_state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Barometer internal temperature status</field>
       <field name="baro_internal" type="int8_t" units="degC">Barometer internal temperature</field>
     </message>
+    <message name="AVIANT_INDICATOR_C2_LINK" id="59007">
+      <description>C2 link quality indicators</description>
+      <field name="state" type="uint8_t" enum="AVIANT_INDICATOR_STATE">Overall C2 link status</field>
+      <field name="rsrp_dbm" type="int16_t" units="dBm">Reference Signal Received Power</field>
+      <field name="rsrq_db" type="int8_t" units="dB">Reference Signal Received Quality</field>
+      <field name="sinr_db" type="int8_t" units="dB">Signal to Interference plus Noise Ratio</field>
+      <field name="default_interface" type="char[16]">Default network interface name</field>
+      <field name="operator_name" type="char[16]">Network operator name</field>
+      <field name="freq_band" type="uint8_t">LTE frequency band indicator</field>
+      <field name="bytes_sent" type="uint32_t" units="bytes">Cumulative bytes sent</field>
+      <field name="bytes_recv" type="uint32_t" units="bytes">Cumulative bytes received</field>
+    </message>
     <!-- I left some room for more indicator messages here, so they can get consecutive IDs -->
     <message name="AVIANT_DETAILED_FC_STATE" id="59025">
       <description>Detailed flight controller state</description>
