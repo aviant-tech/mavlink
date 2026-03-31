@@ -45,6 +45,7 @@
       <entry name="AVIANT_ATS_STATUS_FLAG_REBOOTED_WHILE_ARMED" value="32"/>
       <entry name="AVIANT_ATS_STATUS_FLAG_PARACHUTE_DEPLOY" value="64"/>
       <entry name="AVIANT_ATS_STATUS_FLAG_UPS_UNHEALTHY" value="128"/>
+      <entry name="AVIANT_ATS_STATUS_FLAG_INTERNAL_FAILURE" value="256"/>
     </enum>
   </enums>
   <messages>
